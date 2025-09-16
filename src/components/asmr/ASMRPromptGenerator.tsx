@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { GlassCard } from '../ui/GlassCard';
@@ -8,7 +9,6 @@ import { ErrorIcon } from '../icons/ErrorIcon';
 import { SparklesIcon } from '../icons/SparklesIcon';
 import { PlusIcon } from '../icons/PlusIcon';
 import { BackIcon } from '../icons/BackIcon';
-import { ASMR_TRIGGER_OPTIONS } from '../../constants';
 import { TrashIcon } from '../icons/TrashIcon';
 
 interface ASMRPromptGeneratorProps {
@@ -82,14 +82,6 @@ export const ASMRPromptGenerator: React.FC<ASMRPromptGeneratorProps> = ({
 }) => {
     
     const isLoading = loadingState === LoadingState.GENERATING;
-    
-    const handleTriggerToggle = (trigger: string) => {
-        setTriggers(prev =>
-            prev.includes(trigger)
-                ? prev.filter(t => t !== trigger)
-                : [...prev, trigger]
-        );
-    };
     
      const handleAddCharacter = () => {
         setCharacters(prev => [...prev, {
@@ -173,11 +165,12 @@ export const ASMRPromptGenerator: React.FC<ASMRPromptGeneratorProps> = ({
                     <FormField label="Video Concept"><TextArea value={concept} onChange={e => setConcept(e.target.value)} placeholder="e.g., Unboxing and examining a vintage watch" rows={2} /></FormField>
                     <FormField label="Setting / Environment"><TextArea value={setting} onChange={e => setSetting(e.target.value)} placeholder="e.g., A quiet, softly lit room with a wooden desk" rows={2} /></FormField>
                     <FormField label="ASMR Triggers">
-                        <div className="flex flex-wrap gap-2 p-3 bg-[#101013] rounded-lg border border-white/10">
-                            {ASMR_TRIGGER_OPTIONS.map(trigger => (
-                                <button key={trigger} onClick={() => handleTriggerToggle(trigger)} className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-colors border ${triggers.includes(trigger) ? 'bg-purple-500/80 border-purple-400 text-white' : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'}`}>{trigger}</button>
-                            ))}
-                        </div>
+                       <TextArea
+                            value={triggers.join(', ')}
+                            onChange={(e) => setTriggers(e.target.value.split(',').map(t => t.trim()).filter(Boolean))}
+                            placeholder="Enter triggers, separated by commas (e.g., Whispering, Tapping)"
+                            rows={3}
+                        />
                     </FormField>
                     <div>
                         <h3 className="text-sm font-medium text-slate-300 mb-1.5">ASMRtist (Optional)</h3>
