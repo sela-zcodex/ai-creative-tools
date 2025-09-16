@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Creative Suite</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.15.0",
+    "uuid": "https://aistudiocdn.com/uuid@^11.1.0"
+  }
+}
+</script>
+    <style>
+      body {
+        background-color: #0d0d12;
+        background-image: 
+          radial-gradient(at 10% 90%, hsla(253, 83%, 56%, 0.15) 0px, transparent 50%),
+          radial-gradient(at 90% 10%, hsla(283, 83%, 56%, 0.15) 0px, transparent 50%),
+          radial-gradient(at 50% 50%, hsla(273, 83%, 56%, 0.1) 0px, transparent 50%);
+      }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-slate-300 font-sans">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

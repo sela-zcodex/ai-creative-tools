@@ -1,0 +1,5 @@
+{
+  "name": "AI Creative Suite",
+  "description": "A powerful creative suite to generate stunning videos and images using Google's latest AI models. Features a detailed prompt builder, VEO video generator, and an advanced image generator.",
+  "requestFramePermissions": []
+}
